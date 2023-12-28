@@ -15,6 +15,7 @@ class _BoardComponentState extends State<BoardComponent> {
   void handleClick(int index) {
     setState(() {
       if (controller.isPartEmpty(index)) controller.markPart(index);
+      controller.resultOfPlay();
     });
   }
 
@@ -24,6 +25,7 @@ class _BoardComponentState extends State<BoardComponent> {
 
     return Column(
       children: [
+        if (controller.model.gameIsOver) Text(controller.model.winner!),
         const SizedBox(
           height: 100,
         ),
