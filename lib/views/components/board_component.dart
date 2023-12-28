@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/controllers/board_controller.dart';
 import 'package:tic_tac_toe/views/components/part_board_component.dart';
 
 class BoardComponent extends StatefulWidget {
@@ -9,16 +10,11 @@ class BoardComponent extends StatefulWidget {
 }
 
 class _BoardComponentState extends State<BoardComponent> {
-  List<String> game = List.filled(9, '');
-  bool isXTime = true;
-  bool gameIsOver = false;
+  final BoardController controller = BoardController();
 
   void handleClick(int index) {
     setState(() {
-      if (game[index] == '') {
-        game[index] = isXTime ? 'x' : 'o';
-        isXTime = !isXTime;
-      }
+      if (controller.isPartEmpty(index)) controller.markPart(index);
     });
   }
 
@@ -39,7 +35,7 @@ class _BoardComponentState extends State<BoardComponent> {
               9,
               (index) => PartBoardComponent(
                 index: index,
-                symbol: game[index],
+                symbol: controller.getSymbol(index),
                 onTap: handleClick,
               ),
             ),
@@ -51,9 +47,7 @@ class _BoardComponentState extends State<BoardComponent> {
         ElevatedButton(
           onPressed: () {
             setState(() {
-              game = List.filled(9, '');
-              isXTime = true;
-              gameIsOver = false;
+              controller.restart();
             });
           },
           style: ElevatedButton.styleFrom(

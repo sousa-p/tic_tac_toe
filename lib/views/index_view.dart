@@ -8,9 +8,9 @@ class IndexView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: const Scaffold(
-        body: Center(
-          child: BoardComponent(),
+      home: Scaffold(
+        body: SingleChildScrollView(
+          child: Center(child: BoardComponent()),
         ),
       ),
     );
