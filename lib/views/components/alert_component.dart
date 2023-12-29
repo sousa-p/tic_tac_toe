@@ -19,6 +19,5 @@ class AlertComponent extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

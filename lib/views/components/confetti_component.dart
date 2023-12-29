@@ -14,9 +14,9 @@ class ConfettiComponent extends StatelessWidget {
         confettiController: confettiController,
         blastDirection: 90,
         blastDirectionality: BlastDirectionality.explosive,
-        emissionFrequency: .5,
+        emissionFrequency: .7,
         minimumSize: const Size(10, 10),
-        maximumSize: const Size(50, 50),
+        maximumSize: const Size(40, 20),
         gravity: .9,
       ),
     );
