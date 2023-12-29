@@ -13,7 +13,7 @@ class SymbolComponent extends StatelessWidget {
           : Center(
               child: Text(
                 symbol,
-                style: const TextStyle(fontSize: 72), // Defina o tamanho da fonte como 24 (ou o tamanho desejado)
+                style: const TextStyle(fontSize: 72),
               ),
             ),
     );

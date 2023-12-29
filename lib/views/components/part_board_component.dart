@@ -15,8 +15,8 @@ class PartBoardComponent extends StatelessWidget {
         onTap(index);
       },
       style: ElevatedButton.styleFrom(
-        side: const BorderSide(color: Colors.black45, width: 3), // Define a borda fina com a cor vermelha
-        backgroundColor: Colors.transparent, // Define a cor de fundo do botão como verde
+        side: const BorderSide(color: Colors.black45, width: 3),
+        backgroundColor: Colors.transparent,
       ),
       child: SymbolComponent(symbol: symbol),
     );

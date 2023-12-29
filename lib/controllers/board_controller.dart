@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/models/board_model.dart';
 
 class BoardController {
@@ -37,7 +38,6 @@ class BoardController {
 
   String? whoWins() {
     if (countFilledParts() > 5) return null;
-    if (itsADraw()) return 'Draw';
 
     const List<List<int>> winCombinations = [
       [0, 1, 2],
@@ -55,9 +55,10 @@ class BoardController {
       String p1 = getSymbol(c[1]);
       String p2 = getSymbol(c[2]);
 
-      if (p0.isNotEmpty && p0 == p1 && p1 == p2) return p0;
+      if (p0.isNotEmpty && p0 == p1 && p1 == p2) return p0.toUpperCase();
     }
 
+    if (itsADraw()) return 'Draw';
     return null;
   }
 
