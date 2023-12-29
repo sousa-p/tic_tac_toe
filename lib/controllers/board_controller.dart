@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/models/board_model.dart';
 
 class BoardController {
