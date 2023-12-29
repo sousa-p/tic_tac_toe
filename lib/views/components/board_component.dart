@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tic_tac_toe/controllers/board_controller.dart';
+import 'package:tic_tac_toe/views/breakpoints.dart';
 import 'package:tic_tac_toe/views/components/alert_component.dart';
 import 'package:tic_tac_toe/views/components/confetti_component.dart';
 import 'package:tic_tac_toe/views/components/part_board_component.dart';
@@ -16,6 +17,7 @@ class BoardComponent extends StatefulWidget {
 class _BoardComponentState extends State<BoardComponent> {
   late ConfettiController _confettiController;
   final BoardController controller = BoardController();
+  final Breakpoints brk = Breakpoints();
 
   @override
   void initState() {
@@ -65,6 +67,8 @@ class _BoardComponentState extends State<BoardComponent> {
     double w = MediaQuery.of(context).size.width;
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: [
         ConfettiComponent(alignment: Alignment.centerLeft, confettiController: _confettiController),
         ConfettiComponent(alignment: Alignment.centerRight, confettiController: _confettiController),
@@ -72,8 +76,15 @@ class _BoardComponentState extends State<BoardComponent> {
           height: 100,
         ),
         SizedBox.square(
-          dimension: w * .4,
+          dimension: (w > brk.desktop)
+              ? 500
+              : (w > brk.tablet)
+                  ? w * .4
+                  : (w > brk.mobile)
+                      ? w * .6
+                      : w * .85,
           child: GridView.count(
+            shrinkWrap: true,
             crossAxisCount: 3,
             children: List.generate(
               9,
